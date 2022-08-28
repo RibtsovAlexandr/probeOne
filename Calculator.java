@@ -89,7 +89,7 @@ public class Calculator {
         Scanner std1 = new Scanner(System.in);
         String input;
         String[] operands;
-        int opA, opB;
+        int opA, opB, tmpOp;
         boolean rimOpA, rimOpB, RimOperation;
 
         do {
@@ -127,10 +127,15 @@ public class Calculator {
                         }else System.out.println(opA + opB);
                         break;
                     case ("-"):
-                        System.out.print("результат вычитания = ");
+                        System.out.print("результат вычитания = ");                       
+                        tmpOp = opA - opB;
                         if (RimOperation){
-                            System.out.println(showInRims(opA - opB));
-                        }else System.out.println(opA - opB);
+                            if (tmpOp>0){
+                                System.out.println(showInRims(tmpOp));
+                            }else{
+                                throw new IOException("Невозможно отображать отрицательные величины Римскими цифрами.");
+                            }
+                        }else System.out.println(tmpOp);
                         break;
                     case ("*"):
                         System.out.print("результат умножения = ");
